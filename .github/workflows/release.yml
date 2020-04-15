@@ -33,19 +33,19 @@ jobs:
 
       - name: Move new translations
         run: |
-          mkdir -p /home/runner/work/homeassistant-mikrotik_router/homeassistant-mikrotik_router/custom_components/mikrotik_router/.translations/
-          cp /tmp/lokalise/locale/* /home/runner/work/homeassistant-mikrotik_router/homeassistant-mikrotik_router/custom_components/mikrotik_router/.translations/
+          mkdir -p /home/runner/work/homeassistant-mikrotik_router-test/homeassistant-mikrotik_router-test/custom_components/mikrotik_router/.translations/
+          cp /tmp/lokalise/locale/* /home/runner/work/homeassistant-mikrotik_router-test/homeassistant-mikrotik_router-test/custom_components/mikrotik_router/.translations/
 
       - name: Zip mikrotik_router dir
         run: |
-          cd /home/runner/work/homeassistant-mikrotik_router/homeassistant-mikrotik_router/custom_components/mikrotik_router
+          cd /home/runner/work/homeassistant-mikrotik_router-test/homeassistant-mikrotik_router-test/custom_components/mikrotik_router
           zip mikrotik_router.zip -r ./
       - name: Upload zip to release
         uses: svenstaro/upload-release-action@v1-release
 
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/homeassistant-mikrotik_router/homeassistant-mikrotik_router/custom_components/mikrotik_router/mikrotik_router.zip
+          file: /home/runner/work/homeassistant-mikrotik_router-test/homeassistant-mikrotik_router-test/custom_components/mikrotik_router/mikrotik_router.zip
           asset_name: mikrotik_router.zip
           tag: ${{ github.ref }}
           overwrite: true
@@ -68,4 +68,4 @@ jobs:
 
       - name: Update release notes
         run: |
-          python3 /home/runner/work/homeassistant-mikrotik_router/homeassistant-mikrotik_router/.github/generate_releasenotes.py --token ${{ secrets.GITHUB_TOKEN }} --release yes --tag ${{ github.ref }}
+          python3 /home/runner/work/homeassistant-mikrotik_router-test/homeassistant-mikrotik_router-test/.github/generate_releasenotes.py --token ${{ secrets.GITHUB_TOKEN }} --release yes --tag ${{ github.ref }}
