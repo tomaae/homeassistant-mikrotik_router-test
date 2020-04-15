@@ -11,8 +11,7 @@
                     "port": "Port",
                     "username": "Meno užívateľa",
                     "password": "Heslo",
-                    "ssl": "Použiť SSL",
-                    "unit_of_measurement": "Merná jednotka"
+                    "ssl": "Použiť SSL"
                 }
             }
         },
